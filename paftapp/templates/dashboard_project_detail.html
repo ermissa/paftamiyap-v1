@@ -1,0 +1,169 @@
+{% extends 'document_left_frame.html' %}
+
+{% load static %}
+
+{% block document_page_title %} Ana Sayfa {% endblock document_page_title %}
+
+{% block document_container_fluid %}
+
+<style>
+
+input[type=checkbox] {
+-ms-transform: scale(2); /* IE */
+-moz-transform: scale(2); /* FF */
+-webkit-transform: scale(2); /* Safari and Chrome */
+-o-transform: scale(2); /* Opera */
+padding: 10px;
+margin-left:5px;
+}
+
+</style>
+
+<div class="container-fluid">
+    <!-- <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Dashboard</h4>
+            </div>
+        </div> -->
+
+
+    <!-- Table -->
+
+    
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Proje Bilgileri</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td class="text-nowrap"> <code>İsim</code> </td>
+                            <td>{{project.customer.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap"> <code>Email</code> </td>
+                            <td>{{project.customer.email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap"> <code>Telefon</code> </td>
+                            <td>{{project.customer.phone_number}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-nowrap"> <code>Teslim Tarihi</code> </td>
+                            <td>{{project.deadline|date:'d-m-Y'}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-nowrap"> <code>Kullanılacak Yazılımlar</code> </td>
+                            <td> {% for software in project.softwares.all %}{{ software.name }}<br/>{% endfor %}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-nowrap"> <code>Pafta Boyutu</code> </td>
+                            <td>{{project.map_sheet.size}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap"> <code>Render Alınacak mı?</code> </td>
+                            <td>{{project.has_render|yesno:"Evet,Hayır"}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-nowrap"> <code>Maket Yapılacak mı?</code> </td>
+                            <td>{{project.has_model|yesno:"Evet,Hayır"}}</td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-nowrap"> <code>Proje Açıklaması</code> </td>
+                            <td>{{project.description}}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-nowrap"> <code>Proje Dökümanı</code> </td>
+                            <td>
+                            {% if project.documentation_path %}
+                            <a href="/download/{{project.id}}" class="btn btn-outline-info waves-effect waves-light">
+                                <span class="btn-label"><i class="fa fa-download"></i></span> İNDİR
+                            </a>
+                            {% else %}                            
+                            YOK
+                            {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            
+                            <td class="text-nowrap"> <code>Arandı mı?</code> </td>
+                            <td>
+                                    <input id={{project.id}} type="checkbox" {% if project.is_called %}checked{% endif %} />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+    </div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <script>
+        $(document).ready(function(){
+            var inputId = $("input").attr("id");
+            console.log(inputId);
+            $("input:checkbox").change(function() {
+                if($(this).is(":checked")) { 
+                    $.ajax({
+                        url: '/update_is_called',
+                        contentType: "application/json",
+                        type: 'POST',
+                        data: JSON.stringify({ "id" : inputId })
+                    })
+                    .done(function(x) {
+                        Swal.fire({
+                            title: 'Kayıt arandı olarak işaretlendi!',
+                            type: 'success',
+                            confirmButtonText: 'Tamam'
+                        })
+                    })
+                    .fail(function(x) {
+                        Swal.fire({
+                            title: 'Bazı hatalar meydana geldi:(',
+                            type: 'error',
+                            confirmButtonText: 'Tamam'
+                        })
+                    });                 
+                } else {
+                    $.ajax({
+                        url: '/update_is_called',
+                        contentType: "application/json",
+                        type: 'POST',
+                        data: JSON.stringify({ "id" : inputId })
+                    })
+                    .done(function(x) {
+                        Swal.fire({
+                            title: 'Kaydın durumu "aranmadı" olarak olarak güncellendi!',
+                            type: 'success',
+                            confirmButtonText: 'Tamam'
+                        })
+                    })
+                    .fail(function(x) {
+                        Swal.fire({
+                            title: 'Bazı hatalar meydana geldi:(',
+                            type: 'error',
+                            confirmButtonText: 'Tamam'
+                        })
+                    });
+                }
+            }); 
+        });
+    </script>
+
+</div>
+
+{% endblock document_container_fluid %}

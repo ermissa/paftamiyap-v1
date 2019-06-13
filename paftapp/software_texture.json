@@ -1,0 +1,37 @@
+[
+    {
+        "model" : "paftapp.Software",
+        "pk" : 1,
+        "fields" : {
+            "name" : "Autocad"
+        }
+    },
+    {
+        "pk" : 2,
+        "model" : "paftapp.Software",
+        "fields" : {
+            "name" : "Revit"
+        }
+    },
+    {
+        "pk" : 3,
+        "model" : "paftapp.Software",
+        "fields" : {
+            "name" : "Photoshop"
+        }
+    },
+    {
+        "pk" : 4,
+        "model" : "paftapp.Software",
+        "fields" : {
+            "name" : "3ds Max"
+        }
+    },
+    {
+        "pk" : 5,
+        "model" : "paftapp.Software",
+        "fields" : {
+            "name" : "SketchUp"
+        }
+    }
+]

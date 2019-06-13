@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="MainModule">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block document_page_title %} {% endblock document_page_title %}</title>
+    {% block document_assets %} {% endblock document_assets %}
+</head>
+
+<body class="skin-default fixed-layout">
+
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Architecture Design Admin</p>
+    </div>
+</div>
+
+
+<div id="main-wrapper">
+    {% block document_header %}   {% endblock document_header %}
+    {% block document_left_frame %}   {% endblock document_left_frame %}
+    <div class="page-wrapper" style="min-height: 199px;">
+        {% block document_container_fluid %}   {% endblock document_container_fluid %}
+    </div>
+</div>
+<footer class="footer">
+    © 2019 PaftamiYap by Bahrî-i Hûmâyûn Architects
+</footer>
+</body>
+
+{% block document_js_codes %} {% endblock document_js_codes %}
+
+</html>

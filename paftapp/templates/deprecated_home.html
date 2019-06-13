@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="/projects/add" method="POST">
+            {% csrf_token %}
+            <p>İsim?</p>
+            <input type="text" name="name" placeholder="İsim"><br>
+            
+            <p>Telefon Numarası</p>
+            <input type="text" name="phone_number" placeholder="Telefon No"><br>
+            
+            <p>Projede Kullanılacak Olan Programlar</p>
+            <input type="checkbox" name="softwares" value="1">Autocad<br>
+            <input type="checkbox" name="softwares" value="2">Revit<br>
+
+            <p>Email</p>
+            <input type="email" name="email" placeholder="Email"><br>
+
+            <p>Render Alınacak mı?</p>
+            <input type="radio" name="has_render" value="0">Evet<br>
+            <input type="radio" name="has_render" value="1">Hayır<br>
+
+            <p>Maket Yapılacak mı?</p>
+            <input type="radio" name="has_model" value="0">Evet<br>
+            <input type="radio" name="has_model" value="1">Hayır<br>
+
+            <p>Pafta Boyutu?</p>
+            <input type="radio" name="map_sheet_id" value="1">A0<br>
+            <input type="radio" name="map_sheet_id" value="2">A1<br>
+            <input type="radio" name="map_sheet_id" value="3">A2<br>
+            <input type="radio" name="map_sheet_id" value="4">A3<br>
+            <input type="radio" name="map_sheet_id" value="5">A4<br>
+            <input type="radio" name="map_sheet_id" value="6">A5<br>
+
+            
+            <p>Proje Son Teslim Tarihi</p>
+            <input type="date" name="deadline">
+            
+            
+            <p>Proje Açıklaması</p>
+            <input type="text" name="description" placeholder="Proje Açıklamasını Giriniz">
+            
+            <input type="submit" value="submit">
+            
+        </form>
+    </body>
+</html>

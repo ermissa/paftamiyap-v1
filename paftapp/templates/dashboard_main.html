@@ -1,0 +1,123 @@
+{% extends 'document_left_frame.html' %}
+
+{% load static %}
+
+{% block document_page_title %} Ana Sayfa {% endblock document_page_title %}
+
+{% block document_container_fluid %}
+
+<div class="container-fluid">
+    <!-- <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Dashboard</h4>
+            </div>
+        </div> -->
+
+
+    <!-- Table -->
+    
+    <div class="card">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table id="demo-foo-addrow"
+                    class="table table-bordered m-t-30 table-hover contact-list footable footable-5 footable-paging footable-paging-center breakpoint-lg"
+                    data-paging="true" data-paging-size="7" style="">
+                    <thead>
+                        <tr class="footable-header">
+
+                            <th class="footable-first-visible" style="display: table-cell;">İsim</th>
+                            <th style="display: table-cell;">Email</th>
+                            <th style="display: table-cell;">Telefon</th>
+                            <th style="display: table-cell;">Teslim Tarihi</th>
+                            <th style="display: table-cell;">Pafta Boyut</th>
+                            <th style="display: table-cell;">Render</th>
+                            <th style="display: table-cell;">Maket</th>
+                            <th style="display: table-cell;">Arandı Mı?</th>
+                            <th class="footable-last-visible" style="display: table-cell;">Ayrıntıya Git</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for project in projects %}
+                        <tr class=" {% if project.id in clicked_projects %} table-active {% else %} table-success  {% endif %}">
+                            <td class="footable-first-visible" style="display: table-cell;">{{ project.customer.name }}
+                            </td>
+                            <td style="display: table-cell;">{{ project.customer.email }}</td>
+                            <td style="display: table-cell;">{{ project.customer.phone_number }}</td>
+                            <td style="display: table-cell;">{{ project.deadline|date:'d-m-Y'}}</td>
+                            <td style="display: table-cell;">{{ project.map_sheet.size }}</td>
+                            <td style="display: table-cell;">{{ project.has_render|yesno:"Evet,Hayır"}}</td>
+                            <td style="display: table-cell;">{{ project.has_model|yesno:"Evet,Hayır"}}</td>
+                            <td class="footable-last-visible" style="display: table-cell;">
+                                {% if project.is_called == True %}
+                                <span class="label label-table label-success">Arandı</span>
+                                {% else %}
+                                <span class="label label-table label-danger">Aranmadı</span>    
+                                {% endif %}
+                            </td>
+                            <td class="footable-last-visible" style="display: table-cell;">
+                                <a href="/projects/{{ project.id }}/" class="btn btn-block btn-outline-info">Git</a></td>
+                        </tr>
+
+                        {%endfor%}
+
+                    </tbody>
+                    <tfoot>
+                        <tr class="footable-pading">
+                            <td colspan="9">
+                                <div class="footable-pagination-wrapper">
+                                    {% if projects.has_other_pages %}
+
+                                    <ul class="pagination justify-content-center">
+                                        {% if projects.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                                href="?page={{ projects.previous_page_number }}">&laquo;</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link" aria-hidden="true">&laquo;</span>
+                                        </li>
+                                        {% endif %}
+                                        {% for i in projects.paginator.page_range %}
+                                        {% if projects.number == i %}
+                                        <li class="page-item active">
+                                            <span class="page-link">{{ i }}
+                                                <span class="sr-only">(current)</span>
+                                            </span>
+                                        </li>
+                                        {% else %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                                        </li>
+                                        {% endif %} {% endfor %} {% if projects.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link"
+                                                href="?page={{ projects.next_page_number }}">&raquo;</a>
+                                        </li>
+                                        {% else %}
+                                        <li class="page-item disabled">
+                                            <span class="page-link">&raquo;</span>
+                                        </li>
+                                        {% endif %}
+                                    </ul>
+
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock document_container_fluid %}

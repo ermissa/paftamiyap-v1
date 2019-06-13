@@ -1,0 +1,44 @@
+[
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 1,
+        "fields" : {
+            "size" : "A0"
+        }
+    },
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 2,
+        "fields" : {
+            "size" : "A1"
+        }
+    },
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 3,
+        "fields" : {
+            "size" : "A2"
+        }
+    },
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 4,
+        "fields" : {
+            "size" : "A3"
+        }
+    },
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 5,
+        "fields" : {
+            "size" : "A4"
+        }
+    },
+    {
+        "model" : "paftapp.MapSheet",
+        "pk" : 6,
+        "fields" : {
+            "size" : "A5"
+        }
+    }
+]

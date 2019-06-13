@@ -1,0 +1,44 @@
+{% extends 'document_base.html' %}
+
+{% load static %}
+
+
+{% block document_assets %}
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/p_letter.png' %}">
+
+    <!-- This page CSS -->
+    <!-- chartist CSS -->
+    <link href="{% static 'assets/node_modules/morrisjs/morris.css' %}" rel="stylesheet">
+    <!--Toaster Popup message CSS -->
+    <link href="{% static 'assets/node_modules/toast-master/css/jquery.toast.css' %}" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="{% static 'dist/css/pages/dashboard1.css' %}" rel="stylesheet">
+
+    <!-- Date picker plugins css -->
+    <link href="{% static 'assets/node_modules/bootstrap-datepicker/bootstrap-datepicker.min.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <!-- Daterange picker plugins css -->
+    <link href="{% static 'assets/node_modules/timepicker/bootstrap-timepicker.min.css" rel="stylesheet' %}">
+    <link href="{% static 'assets/node_modules/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet' %}">
+
+    <link href="{% static 'assets/node_modules/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet' %}">
+
+
+    <!-- Custom CSS -->
+    <link href="{% static 'dist/css/style.min.css' %}" rel="stylesheet">
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'assets/node_modules/datatables/jquery.dataTables.min.css' %}"/>
+
+    <!--alerts CSS -->
+    <link href="{% static 'assets/node_modules/sweetalert/sweetalert.css' %}" rel="stylesheet" type="text/css">
+
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+{% endblock document_assets %}
